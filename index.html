@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vivwebz.net</title>
+    <link rel="stylesheet" href="https://unpkg.com/7.css" />
+    <style>
+      body {
+        margin: 0;
+        background-image: url('https://fuckthefeds.pro/static/img/bg.gif');
+        background-repeat: repeat;
+        height: 100vh;
+        overflow: hidden;
+      }
+      #glassWindow {
+        position: absolute;
+        width: 400px;
+        cursor: grab;
+      }
+      #tooltip {
+        width: 300px;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="glassWindow" class="window glass active;" style="--window-background-color: #805ba5;">
+      <div class="title-bar">
+        <div class="title-bar-text">vivwebz.net</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body has-space">
+        <p>Welcome to vivwebz.net!</p>
+        <button id="tooltipButton">Enter</button>
+      </div>
+    </div>
+    <div id="tooltip" role="tooltip">The website is still under development, so unfortunately, you can not currently enter it. Come back soon to explore vivwebz.net!</div>
+    <script>
+      function centerWindow(el) {
+        const rect = el.getBoundingClientRect();
+        el.style.left = ((window.innerWidth - rect.width) / 2) + 'px';
+        el.style.top = ((window.innerHeight - rect.height) / 2) + 'px';
+      }
+      const glassWindow = document.getElementById('glassWindow');
+      centerWindow(glassWindow);
+
+      (function() {
+        let isDragging = false;
+        let startX, startY, startLeft, startTop;
+        
+        glassWindow.addEventListener('mousedown', function(e) {
+          isDragging = true;
+          startX = e.clientX;
+          startY = e.clientY;
+          startLeft = parseInt(window.getComputedStyle(glassWindow).left, 10);
+          startTop = parseInt(window.getComputedStyle(glassWindow).top, 10);
+          glassWindow.style.cursor = 'grabbing';
+          e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', function(e) {
+          if (!isDragging) return;
+          const dx = e.clientX - startX;
+          const dy = e.clientY - startY;
+          glassWindow.style.left = (startLeft + dx) + 'px';
+          glassWindow.style.top = (startTop + dy) + 'px';
+
+          updateTooltipPosition();
+        });
+
+        document.addEventListener('mouseup', function() {
+          isDragging = false;
+          glassWindow.style.cursor = 'grab';
+        });
+      })();
+      
+      const tooltip = document.getElementById('tooltip');
+      const button = document.getElementById('tooltipButton');
+      let tooltipTimeout;
+
+      button.addEventListener('click', function() {
+        clearTimeout(tooltipTimeout);
+        updateTooltipPosition();
+        tooltip.style.opacity = '1';
+        
+        tooltipTimeout = setTimeout(() => {
+          tooltip.style.opacity = '0';
+        }, 4000);
+      });
+
+      function updateTooltipPosition() {
+        const rect = button.getBoundingClientRect();
+        tooltip.style.left = `${rect.left + window.scrollX + 25}px`;
+        tooltip.style.top = `${rect.bottom + window.scrollY + 25}px`;
+      }
+    </script>
+  </body>
+</html>
