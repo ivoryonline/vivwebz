@@ -92,7 +92,7 @@
                 </menu>
                 <article role="tabpanel" id="music">
                     <input type="checkbox" id="togglemusic">
-                    <label for="togglemusic">Random Toggle</label>
+                    <label for="togglemusic">Toggle Music</label>
                 </article>
             </div>
         </div>
@@ -118,7 +118,24 @@
             </div>
         </div>
     </div>
-<script src="https://vivwebz.pages.dev/js/audio.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleMusicCheckbox = document.getElementById('togglemusic');
+    
+    const music = new Audio('bgmusichome.mp3');
+    
+    music.loop = true;
+    
+    toggleMusicCheckbox.addEventListener('change', function() {
+      if (this.checked) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    });
+  });
+</script>
+
 </body>
 
 </html>
