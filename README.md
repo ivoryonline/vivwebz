@@ -1,0 +1,1 @@
+vivwebz.net is my personal web project. I took inspiration from 2000s web design and Win7 to create the design and structure! I'm not entirely sure on everything that I'll be adding, but you'll likely see a lot of content posted here. ヾ(^▽^*)))
