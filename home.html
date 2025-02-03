@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vivwebz.net</title>
+    <link rel="stylesheet" href="https://unpkg.com/7.css" />
+    <link rel="icon" href="https://vivwebz.pages.dev/favicon.ico" type="image/x-icon">
+    <style>
+        @keyframes moveBackground {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: 40vw 40vh;
+            }
+        }
+
+        body {
+            margin: 0;
+            background-image: url('https://vivwebz.net/media/spacebg.gif');
+            background-repeat: repeat;
+            height: 100vh;
+            overflow: hidden;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        .container {
+            display: flex;
+            gap: 10px;
+            padding-top: 5%;
+            padding-right: 10%;
+            padding-left: 10%;
+            align-items: flex-start;
+        }
+
+        .contentcontainer {
+            display: flex;
+            gap: 10px;
+            padding-top: 10px;
+            padding-right: 10%;
+            padding-left: 10%;
+            align-items: flex-start;
+        }
+
+        .window {
+            width: 300px;
+        }
+
+        .top-window {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="window glass active" style="--window-background-color: #805ba5;">
+            <div class="title-bar">
+                <div class="title-bar-text">Navigation</div>
+            </div>
+            <div class="window-body">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <details open>
+                        <summary>Library</summary>
+                        <ul>
+                            <li><a href="#vrc">VRC Pictures</a></li>
+                        </ul>
+                    </details>
+                </ul>
+            </div>
+        </div>
+
+        <div class="window glass active top-window" style="--window-background-color: #805ba5;">
+            <div class="title-bar">
+                <div class="title-bar-text">Welcome to vivwebz.net!</div>
+            </div>
+            <div class="window-body has-space">
+                <p>vivwebz.net is my personal web project. I took inspiration from 2000s web design and Win7 to create the design and structure! I'm not entirely sure on everything that I'll be adding, but you'll likely see a lot of content posted here. ヾ(^▽^*)))</p>
+            </div>
+        </div>
+
+        <div class="window glass active" style="--window-background-color: #805ba5;">
+            <div class="title-bar">
+                <div class="title-bar-text">Webz-Settings</div>
+            </div>
+            <div class="window-body has-space">
+                <menu role="tablist" aria-label="settings">
+                    <button role="tab" aria-controls="music" aria-selected="true">General</button>
+                </menu>
+                <article role="tabpanel" id="music">
+                    <input type="checkbox" id="togglemusic">
+                    <label for="togglemusic">Random Toggle</label>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="contentcontainer">
+        <div class="window glass active top-window" style="--window-background-color: #805ba5;">
+            <div class="title-bar">
+                <div class="title-bar-text">About Me!</div>
+            </div>
+            <div class="window-body has-space">
+                <p>My Name: Vivian is my main name, though you can also call me V and Viv. I also have other names that people close to me call me by.</p>
+                <p>Gender: Female ♀</p>
+                <p>Pronouns: She/Her</p>
+                <p>Interests:</p>
+                <ul>
+                  <li>Virtual Reality</li>
+                  <li>Programming</li>
+                  <li>Music</li>
+                  <li>Cybernetics</li>
+                  <li>Video-Editing</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<script src="https://vivwebz.pages.dev/js/audio.js"></script>
+</body>
+
+</html>
