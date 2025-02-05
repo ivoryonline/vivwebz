@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vivwebz.net</title>
+    <link rel="stylesheet" href="https://unpkg.com/7.css" />
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <style>
+      @keyframes moveBackground {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 100% 100%;
+        }
+      }
+      
+      body {
+        margin: 0;
+        background-repeat: repeat;
+        background-size: 200px 200px;
+        height: 100vh;
+        overflow: hidden;
+        animation: moveBackground 60s linear infinite;
+        background-image: url('media/spacebg.gif');
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #glassWindow {
+        width: 400px;
+        cursor: grab;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="glassWindow" class="window glass active" style="--window-background-color: #805ba5;">
+      <div class="title-bar">
+        <div class="title-bar-text">vivwebz.net</div>
+        <div class="title-bar-controls">
+          <button aria-label="Minimize"></button>
+          <button aria-label="Maximize"></button>
+          <button aria-label="Close"></button>
+        </div>
+      </div>
+      <div class="window-body has-space">
+        <p>This page does not exist!</p>
+        <button id="tooltipButton">Travel Home~!</button>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("tooltipButton").addEventListener("click", function() {
+        window.location.href = "https://vivwebz.net/home";
+      });
+    </script>
+  </body>
+</html>
