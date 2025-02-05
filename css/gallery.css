@@ -29,6 +29,7 @@
 
 #preview-window .window-body {
   text-align: center;
+  user-select: none;
 }
 
 #preview-window img {
@@ -36,4 +37,5 @@
   height: auto;
   border: none;
   border-radius: 0;
+  pointer-events: none;
 }
