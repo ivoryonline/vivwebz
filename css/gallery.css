@@ -1,0 +1,39 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+#preview-window {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 600px;
+  z-index: 1000;
+  --window-background-color: #805ba5;
+}
+
+#preview-window .window-body {
+  text-align: center;
+}
+
+#preview-window img {
+  max-width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 0;
+}
