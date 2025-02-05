@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/gallery.css" />
     <link rel="stylesheet" href="https://unpkg.com/7.css" />
     <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <script src="js/gallery.js"></script>
     <style>
       body {
         background-image: url('media/spacebg.gif');
@@ -118,63 +119,7 @@
         <img id="preview-image" src="" alt="Preview">
       </div>
     </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const toggleMusicCheckbox = document.getElementById('togglemusic');
-        const music = new Audio('bgmusicvrc.mp3');
-        music.loop = true;
-        toggleMusicCheckbox.addEventListener('change', function () {
-          if (this.checked) {
-            music.play();
-          } else {
-            music.pause();
-          }
-        });
-
-        const galleryImages = document.querySelectorAll('.gallery img');
-        const previewWindow = document.getElementById('preview-window');
-        const previewImage = document.getElementById('preview-image');
-        const previewTitle = document.getElementById('preview-title');
-        const previewCloseButton = document.getElementById('preview-close-button');
-
-        galleryImages.forEach(function (img) {
-          img.addEventListener('click', function () {
-            previewImage.src = img.src;
-            previewImage.alt = img.alt;
-            previewTitle.textContent = img.dataset.timestamp;
-            previewWindow.style.display = 'block';
-          });
-        });
-
-        previewCloseButton.addEventListener('click', function () {
-          previewWindow.style.display = 'none';
-        });
-
-        const previewTitleBar = document.getElementById('preview-title-bar');
-        let isDragging = false;
-        let offsetX, offsetY;
-
-        previewTitleBar.addEventListener('mousedown', function (e) {
-          isDragging = true;
-          const rect = previewWindow.getBoundingClientRect();
-          offsetX = e.clientX - rect.left;
-          offsetY = e.clientY - rect.top;
-        });
-
-        document.addEventListener('mousemove', function (e) {
-          if (isDragging) {
-            previewWindow.style.left = (e.clientX - offsetX) + 'px';
-            previewWindow.style.top = (e.clientY - offsetY) + 'px';
-          }
-        });
-
-        document.addEventListener('mouseup', function () {
-          isDragging = false;
-        });
-      });
-    </script>
-
+    
     <img id="npc" src="https://vivwebz.net/media/digitaldragon2.gif" alt="NPC">
     <div id="npc-tooltip" role="tooltip" class="is-top is-left"></div>
 
@@ -190,18 +135,26 @@
           "My shift ends at 6AM, and starts at 6AM. 24/7 grinding out here."
         ];
 
+        let isDialogueActive = false;
+
         npc.addEventListener('click', function () {
+          if (isDialogueActive) return;
+
+          isDialogueActive = true;
           const randomDialogue = dialogues[Math.floor(Math.random() * dialogues.length)];
           npcTooltip.textContent = randomDialogue;
           npcTooltip.classList.remove('tooltip-fade-out');
           npcTooltip.style.display = 'block';
           npcTooltip.classList.add('tooltip-fade-in');
+
           setTimeout(function () {
             npcTooltip.classList.remove('tooltip-fade-in');
             npcTooltip.classList.add('tooltip-fade-out');
+
             setTimeout(function () {
               npcTooltip.style.display = 'none';
               npcTooltip.classList.remove('tooltip-fade-out');
+              isDialogueActive = false;
             }, 500);
           }, 3000);
         });
