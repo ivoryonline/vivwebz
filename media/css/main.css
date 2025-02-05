@@ -1,0 +1,43 @@
+@keyframes moveBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+body {
+  margin: 0;
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  height: 100vh;
+  overflow: hidden;
+  animation: moveBackground 60s linear infinite;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+  padding-top: 5%;
+  padding-right: 10%;
+  padding-left: 10%;
+  align-items: flex-start;
+}
+
+.contentcontainer {
+  display: flex;
+  gap: 10px;
+  padding-top: 10px;
+  padding-right: 10%;
+  padding-left: 10%;
+  align-items: flex-start;
+}
+
+.window {
+  width: 300px;
+}
+
+.top-window {
+  flex-grow: 1;
+}
