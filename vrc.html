@@ -19,7 +19,6 @@
       from {
         opacity: 0;
       }
-
       to {
         opacity: 1;
       }
@@ -29,7 +28,6 @@
       from {
         opacity: 1;
       }
-
       to {
         opacity: 0;
       }
@@ -75,11 +73,11 @@
       </div>
       <div class="window-body">
         <ul>
-          <li><a href="https://vivwebz.net/home">Home</a></li>
+          <li><a href="home.html">Home</a></li>
           <details open>
             <summary>Library</summary>
             <ul>
-              <li><a href="https://vivwebz.net/vrc">VRC Pictures</a></li>
+              <li><a href="vrc.html">VRC Pictures</a></li>
             </ul>
           </details>
         </ul>
@@ -92,7 +90,10 @@
       </div>
       <div class="window-body has-space">
         <p>Every now and then, I play VRChat, and occasionally I'll take picture too. So when I feel like sharing these
-          pictures online, this is exactly the first place they'll go. (^^ゞ</p>
+          pictures online, this is exactly the first place they'll go. (^^ゞ
+          <br>
+          <a href="trans.html">take me somewhere magical</a>
+        </p>
       </div>
     </div>
 
@@ -107,6 +108,12 @@
         <article role="tabpanel" id="music">
           <input type="checkbox" id="togglemusic">
           <label for="togglemusic">Toggle Music</label>
+          <div class="field-row" style="max-width: 300px; margin-top: 1em;">
+            <label>Volume:</label>
+            <label>Low</label>
+            <input type="range" id="volume-slider" min="1" max="11" value="5" />
+            <label>High</label>
+          </div>
         </article>
       </div>
     </div>
@@ -139,6 +146,35 @@
 
   <img id="npc" src="/media/digitaldragon2.gif" alt="NPC">
   <div id="npc-tooltip" role="tooltip" class="is-top is-left"></div>
+
+  <audio id="music-player" loop style="display:none;">
+    <source src="bgmusicvrc.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const musicPlayer = document.getElementById('music-player');
+    const toggleMusic  = document.getElementById('togglemusic');
+    const volumeSlider = document.getElementById('volume-slider');
+
+    function updateVolume() {
+      const vol = (parseFloat(volumeSlider.value) - 1) / 10;
+      musicPlayer.volume = vol;
+      console.log("Volume set to:", vol);
+    }
+
+    updateVolume();
+
+    toggleMusic.addEventListener('change', () => {
+      if (toggleMusic.checked) {
+        musicPlayer.play();
+      } else {
+        musicPlayer.pause();
+      }
+    });
+
+    volumeSlider.addEventListener('input', updateVolume);
+  </script>
 </body>
 
 </html>
