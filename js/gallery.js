@@ -1,15 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const toggleMusicCheckbox = document.getElementById('togglemusic');
-  const music = new Audio('bgmusicvrc.mp3');
-  music.loop = true;
-  toggleMusicCheckbox.addEventListener('change', function () {
-    if (this.checked) {
-      music.play();
-    } else {
-      music.pause();
-    }
-  });
-
   const previewWindow = document.getElementById('preview-window');
   const previewImage = document.getElementById('preview-image');
   const previewTitle = document.getElementById('preview-title');
