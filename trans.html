@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home | vivwebz.net</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/baseimagegallery.css" />
+    <link rel="stylesheet" href="https://unpkg.com/7.css@0.17.0/dist/7.css" />
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            background-image: url('media/trans.png');
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="window glass active" style="--window-background-color: #805ba5;">
+            <div class="title-bar">
+                <div class="title-bar-text">Navigation</div>
+            </div>
+            <div class="window-body">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <details open>
+                        <summary>Library</summary>
+                        <ul>
+                            <li><a href="vrc.html">VRC Pictures</a></li>
+                        </ul>
+                    </details>
+                </ul>
+            </div>
+        </div>
+
+        <div class="window glass active top-window" style="--window-background-color: #805ba5;">
+            <div class="title-bar">
+                <div class="title-bar-text">welcome to the best country (we have the best flag)</div>
+            </div>
+            <div class="window-body has-space">
+                <p>yes im based and trans and stuff</p>
+            </div>
+        </div>
+
+        <div class="window glass active" style="--window-background-color: #805ba5;">
+            <div class="title-bar">
+              <div class="title-bar-text">Webz-Settings</div>
+            </div>
+            <div class="window-body has-space">
+              <menu role="tablist" aria-label="settings">
+                <button role="tab" aria-controls="music" aria-selected="true">General</button>
+              </menu>
+              <article role="tabpanel" id="music">
+                <input type="checkbox" id="togglemusic">
+                <label for="togglemusic">Toggle Music</label>
+                <div class="field-row" style="max-width: 300px; margin-top: 1em;">
+                  <label>Volume:</label>
+                  <label>Low</label>
+                  <input type="range" id="volume-slider" min="1" max="11" value="5" />
+                  <label>High</label>
+                </div>
+              </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="contentcontainer">
+        <div class="window glass active top-window" style="--window-background-color: #805ba5;">
+            <div class="title-bar">
+                <div class="title-bar-text">About Me! (trans edition) & This Page!</div>
+            </div>
+            <div class="window-body has-space">
+                <p>If I've ever shared with you any of my personal feeling and thoughts relating the subject of transgenderism and my first-hand experience, then consider yourself trusted. I'm a pretty closed person and so the most I usually ever share is my dysphoric experiences, anyone that's ever helped me with anything to do with that is truly amazing in my eyes, and fuck anyone that says otherwise. Thank you, you amazing people.</p>
+                <p>Not sure on how I'll develop this page, but well done on finding it! (unless you you just saw it on github lmao)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contentcontainer">
+        <div class="window glass active top-window" style="--window-background-color: #805ba5;">
+          <div class="title-bar">
+            <div class="title-bar-text">made with 100% pure cis energy</div>
+          </div>
+          <div class="window-body has-space">
+            <div class="gallery">
+              <img src="media/trans/0001.webp" alt="Meme 1" data-timestamp="Meme 1">
+              <img src="media/trans/0002.webp" alt="Meme 2" data-timestamp="Meme 2">
+              <img src="media/trans/0003.webp" alt="Meme 3" data-timestamp="Meme 3">
+              <img src="media/trans/0004.webp" alt="Meme 4" data-timestamp="Meme 4">
+              <img src="media/trans/0005.webp" alt="Meme 5" data-timestamp="Meme 5">
+              <img src="media/trans/0006.webp" alt="Meme 6" data-timestamp="Meme 6">
+              <img src="media/trans/0007.webp" alt="Meme 7" data-timestamp="Meme 7">
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div id="preview-window" class="window active glass">
+        <div class="title-bar" id="preview-title-bar">
+          <div class="title-bar-text" id="preview-title">Image Preview</div>
+          <div class="title-bar-controls">
+            <button aria-label="Close" id="preview-close-button"></button>
+          </div>
+        </div>
+        <div class="window-body has-space">
+          <img id="preview-image" src="" alt="Preview">
+        </div>
+    </div>
+    <audio id="music-player" loop style="display:none;">
+    <source src="https://assets.vivwebz.net/thetowninsideme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+    <script>
+    const musicPlayer = document.getElementById('music-player');
+    const toggleMusic  = document.getElementById('togglemusic');
+    const volumeSlider = document.getElementById('volume-slider');
+
+    function updateVolume() {
+        const vol = (parseFloat(volumeSlider.value) - 1) / 10;
+        musicPlayer.volume = vol;
+        console.log("Volume set to:", vol);
+    }
+
+    updateVolume();
+
+    toggleMusic.addEventListener('change', () => {
+        if (toggleMusic.checked) {
+        musicPlayer.play();
+        } else {
+        musicPlayer.pause();
+        }
+    });
+
+    volumeSlider.addEventListener('input', updateVolume);
+    </script>
+
+</body>
+
+<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+<script src="js/baseimagegallery.js"></script>
+<script>
+    new cursoreffects.rainbowCursor({
+        length: 20,
+        colors: ["#5BCEFA", "#F5A9B8", "#FFFFFF", "#F5A9B8", "#5BCEFA"],
+        size: 3,
+    });
+</script>
+
+</html>
