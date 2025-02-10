@@ -30,6 +30,14 @@
                             <li><a href="vrc.html">VRC Pictures</a></li>
                         </ul>
                     </details>
+                    <details open>
+                        <summary><a href="hobbies.html">Hobbies</a></summary>
+                        <ul>
+                            <li>Anime (Coming soon :3)</li>
+                            <li>FNAF (Coming soon :3)</li>
+                            <li><a href="scp.html">SCP</a></li>
+                        </ul>
+                    </details>
                 </ul>
             </div>
         </div>
@@ -45,17 +53,24 @@
 
         <div class="window glass active" style="--window-background-color: #805ba5;">
             <div class="title-bar">
-                <div class="title-bar-text">Webz-Settings</div>
+              <div class="title-bar-text">Webz-Settings</div>
             </div>
             <div class="window-body has-space">
-                <menu role="tablist" aria-label="settings">
-                    <button role="tab" aria-controls="music" aria-selected="true">General</button>
-                </menu>
-                <article role="tabpanel" id="music">
-                    <input type="checkbox" id="togglemusic">
-                    <label for="togglemusic">Toggle Music</label>
-                </article>
+              <menu role="tablist" aria-label="settings">
+                <button role="tab" aria-controls="music" aria-selected="true">General</button>
+              </menu>
+              <article role="tabpanel" id="music">
+                <input type="checkbox" id="togglemusic">
+                <label for="togglemusic">Toggle Music</label>
+                <div class="field-row" style="max-width: 300px; margin-top: 1em;">
+                  <label>Volume:</label>
+                  <label>Low</label>
+                  <input type="range" id="volume-slider" min="1" max="11" value="5" />
+                  <label>High</label>
+                </div>
+              </article>
             </div>
+          </div>
         </div>
     </div>
 
@@ -80,23 +95,34 @@
             </div>
         </div>
     </div>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const toggleMusicCheckbox = document.getElementById('togglemusic');
+    <audio id="music-player" loop style="display:none;">
+        <source src="bgmusichome.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     
-    const music = new Audio('bgmusichome.mp3');
-    
-    music.loop = true;
-    
-    toggleMusicCheckbox.addEventListener('change', function() {
-      if (this.checked) {
-        music.play();
-      } else {
-        music.pause();
-      }
+    <script>
+    const musicPlayer = document.getElementById('music-player');
+    const toggleMusic  = document.getElementById('togglemusic');
+    const volumeSlider = document.getElementById('volume-slider');
+
+    function updateVolume() {
+        const vol = (parseFloat(volumeSlider.value) - 1) / 10;
+        musicPlayer.volume = vol;
+        console.log("Volume set to:", vol);
+    }
+
+    updateVolume();
+
+    toggleMusic.addEventListener('change', () => {
+        if (toggleMusic.checked) {
+        musicPlayer.play();
+        } else {
+        musicPlayer.pause();
+        }
     });
-  });
-</script>
+
+    volumeSlider.addEventListener('input', updateVolume);
+    </script>
 
 </body>
 
