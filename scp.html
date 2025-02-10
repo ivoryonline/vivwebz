@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scp | vivwebz.net</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="https://unpkg.com/7.css@0.17.0/dist/7.css" />
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl7z0Dq_IytAcvcJfIuQIZT1QpWrr--Oc-mQ&s');
+        }
+
+        p.small {
+            line-height: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="window glass active">
+            <div class="title-bar">
+                <div class="title-bar-text">Navigation</div>
+            </div>
+            <div class="window-body">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <details open>
+                        <summary>Library</summary>
+                        <ul>
+                            <li><a href="vrc.html">VRC Pictures</a></li>
+                        </ul>
+                    </details>
+                    <details open>
+                        <summary><a href="hobbies.html">Hobbies</a></summary>
+                        <ul>
+                            <li>Anime (Coming soon :3)</li>
+                            <li>FNAF (Coming soon :3)</li>
+                            <li><a href="scp.html">SCP</a></li>
+                        </ul>
+                    </details>
+                </ul>
+            </div>
+        </div>
+
+        <div class="window glass active top-window">
+            <div class="title-bar">
+                <div class="title-bar-text">SCP Foundation - Secure, Contain, Protect.</div>
+            </div>
+            <div class="window-body has-space">
+                <p class="small" style="color:Maroon;">WARNING: THE FOUNDATION DATABASE IS</p>
+                <p class="small" style="color:Maroon; font-size:30px;"><b>CLASSIFIED</b></p>
+                <p class="small" style="color:Maroon;">ACCESS BY UNAUTHORIZED PERSONNEL IS STRICTLY PROHIBITED</p>
+                <p class="small" style="color:Maroon;">PERPETRATORS WILL BE TRACKED, LOCATED, AND DETAINED</p>
+            </div>
+        </div>
+
+        <div class="window glass active">
+            <div class="title-bar">
+              <div class="title-bar-text">Webz-Settings</div>
+            </div>
+            <div class="window-body has-space">
+              <menu role="tablist" aria-label="settings">
+                <button role="tab" aria-controls="music" aria-selected="true">General</button>
+              </menu>
+              <article role="tabpanel" id="music">
+                <input type="checkbox" id="togglemusic">
+                <label for="togglemusic">Toggle Music</label>
+                <div class="field-row" style="max-width: 300px; margin-top: 1em;">
+                  <label>Volume:</label>
+                  <label>Low</label>
+                  <input type="range" id="volume-slider" min="1" max="11" value="5" />
+                  <label>High</label>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="contentcontainer">
+        <div class="window glass active top-window">
+            <div class="title-bar">
+                <div class="title-bar-text">SCP-████ (Vivian)</div>
+            </div>
+            <div class="window-body has-space">
+                <p>I've been a large fan of the SCP-Foundation since around the fall of 2019, since then, I have wrote many fictional narratives and articles based on my own headcanon, though, never published, and most lost to time. Similarly to my gallery system, I'll likely develop an article system, to post all my custom SCP writing here. If I ever end up creating custom art, I'll be sure to add a gallery here too.</p>
+                <p>- Dr. Vivian</p>
+            </div>
+        </div>
+    </div>
+    <audio id="music-player" loop style="display:none;">
+        <source src="https://assets.vivwebz.net/scpambience.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+    const musicPlayer = document.getElementById('music-player');
+    const toggleMusic  = document.getElementById('togglemusic');
+    const volumeSlider = document.getElementById('volume-slider');
+
+    function updateVolume() {
+        const vol = (parseFloat(volumeSlider.value) - 1) / 10;
+        musicPlayer.volume = vol;
+        console.log("Volume set to:", vol);
+    }
+
+    updateVolume();
+
+    toggleMusic.addEventListener('change', () => {
+        if (toggleMusic.checked) {
+        musicPlayer.play();
+        } else {
+        musicPlayer.pause();
+        }
+    });
+
+    volumeSlider.addEventListener('input', updateVolume);
+    </script>
+
+</body>
+
+</html>
